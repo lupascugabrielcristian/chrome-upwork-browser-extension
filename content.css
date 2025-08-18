@@ -1,0 +1,22 @@
+.proposal-highlight {
+  background-color: #fff59d;
+  color: #000;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.red-highlight {
+  background-color: #ff8a80;
+  color: #000;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.exact-phrase-highlight {
+  background-color: #7ee382;
+  color: #000;
+  border-radius: 2px;
+  padding: 0 2px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+

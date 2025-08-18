@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Highlighter Options</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 24px; }
+      h1 { font-size: 20px; margin: 0 0 12px; }
+      label { display: block; margin: 12px 0 6px; font-weight: 600; }
+      input[type="text"] { width: 420px; max-width: 100%; padding: 8px; }
+      textarea { width: 420px; max-width: 100%; padding: 8px; }
+      button { padding: 8px 12px; margin-top: 10px; }
+      .hint { color: #555; font-size: 12px; margin-top: 6px; }
+      ul { padding-left: 18px; }
+      li { margin: 6px 0; }
+      .word-pill { display: inline-block; background: #ffe0e0; border: 1px solid #f5b5b5; border-radius: 12px; padding: 2px 8px; margin: 2px; }
+      .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    </style>
+  </head>
+  <body>
+    <h1>Highlighter Options</h1>
+
+    <label for="wordsInput">Red-highlight words</label>
+    <div class="row">
+      <input id="wordsInput" type="text" placeholder="Comma-separated words (e.g., India, urgent)" />
+      <button id="saveBtn">Save</button>
+    </div>
+    <div class="hint">Case-insensitive whole-word match. Default includes "India".</div>
+
+    <h3>Current words</h3>
+    <div id="wordsList"></div>
+
+    <label for="exactPhrasesInput">Exact phrases (green)</label>
+    <textarea id="exactPhrasesInput" rows="6" placeholder="One phrase per line (e.g., Proposals: 5 to 10)"></textarea>
+    <div class="hint">Exact substring match (case-sensitive). Each line is treated as a separate phrase.</div>
+
+    <h3>Current exact phrases</h3>
+    <div id="phrasesList"></div>
+
+    <script src="options.js"></script>
+  </body>
+  </html>
+
+
