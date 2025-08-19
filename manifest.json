@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Highlighter: Proposal & Red Words",
+  "name": "Upwork Highlighter",
   "version": "1.3.0",
-  "description": "Highlights 'Proposal' (yellow), user-defined exact phrases (green), and user-defined red words.",
+  "description": "Highlights some words in red and other in green on Upwork job posts.",
   "permissions": ["storage"],
   "content_scripts": [
     {
