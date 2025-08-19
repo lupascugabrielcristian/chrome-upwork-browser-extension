@@ -41,8 +41,9 @@
   }
 
   function parseInputToWords(text) {
+    // Now splits by lines instead of commas
     return text
-      .split(',')
+      .split('\n')
       .map((w) => w.trim())
       .filter((w) => w.length > 0)
       .filter((w, i, arr) => arr.indexOf(w) === i);
@@ -64,7 +65,7 @@
     chrome.storage.sync.get(DEFAULTS, (items) => {
       renderWords(items.redWords);
       renderPhrases(items.exactPhrases);
-      wordsInput.value = (items.redWords || []).join(', ');
+      wordsInput.value = (items.redWords || []).join('\n');
       exactPhrasesInput.value = (items.exactPhrases || []).join('\n');
     });
   }
@@ -89,5 +90,3 @@
   document.addEventListener('DOMContentLoaded', load);
   load();
 })();
-
-

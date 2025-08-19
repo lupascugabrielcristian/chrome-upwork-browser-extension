@@ -22,24 +22,22 @@
     <h1>Highlighter Options</h1>
 
     <label for="wordsInput">Red-highlight words</label>
-    <div class="row">
-      <input id="wordsInput" type="text" placeholder="Comma-separated words (e.g., India, urgent)" />
-      <button id="saveBtn">Save</button>
-    </div>
-    <div class="hint">Case-insensitive whole-word match. Default includes "India".</div>
+    <textarea id="wordsInput" rows="6" placeholder="One word or phrase per line (e.g., India)" ></textarea>
+    <div class="hint">Case-insensitive whole-word match. Each line is treated as a separate word or phrase. Default includes "India".</div>
 
     <h3>Current words</h3>
     <div id="wordsList"></div>
 
-    <label for="exactPhrasesInput">Exact phrases (green)</label>
+    <label for="exactPhrasesInput">Green-highlight words</label>
     <textarea id="exactPhrasesInput" rows="6" placeholder="One phrase per line (e.g., Proposals: 5 to 10)"></textarea>
     <div class="hint">Exact substring match (case-sensitive). Each line is treated as a separate phrase.</div>
 
     <h3>Current exact phrases</h3>
     <div id="phrasesList"></div>
 
+
+    <button id="saveBtn">Save</button>
+
     <script src="options.js"></script>
   </body>
   </html>
-
-
