@@ -25,14 +25,10 @@
     if (!element) return false;
     if (SKIP_TAGS.has(element.tagName)) return true;
     if (element.isContentEditable) return true;
-    if (
-      element.closest &&
+    return element.closest &&
       (element.closest(`.${YELLOW_HIGHLIGHT_CLASS}`) ||
         element.closest(`.${RED_HIGHLIGHT_CLASS}`) ||
-        element.closest(`.${EXACT_PHRASE_CLASS}`))
-    )
-      return true;
-    return false;
+        element.closest(`.${EXACT_PHRASE_CLASS}`));
   }
 
   function highlightInTextNode(textNode, redWords, exactPhrases) {
@@ -189,6 +185,44 @@
     });
   }
 
+  function markSectionsWithExactPhrases() {
+    const sections = document.querySelectorAll('.air3-card-section');
+    sections.forEach(section => {
+      const hasExactPhrase = section.querySelector('.' + EXACT_PHRASE_CLASS);
+      if (hasExactPhrase) {
+        section.classList.add('has-exact-phrase');
+      } else {
+        section.classList.remove('has-exact-phrase');
+      }
+    });
+  }
+
+  // Start observing after the initial highlight process
+  function processAndObserve(redWords, exactPhrases) {
+    markSectionsWithExactPhrases();
+
+    const sectionObserver = new MutationObserver((mutations) => {
+      let shouldProcess = false;
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList' ||
+            (mutation.type === 'attributes' && mutation.attributeName === 'class')) {
+          shouldProcess = true;
+          break;
+        }
+      }
+      if (shouldProcess) {
+        markSectionsWithExactPhrases();
+      }
+    });
+
+    sectionObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+
   function loadSettingsAndRun() {
     // defaults
     const defaults = { redWords: ['India'], exactPhrases: DEFAULT_EXACT_PHRASES };
@@ -208,14 +242,14 @@
       document.addEventListener('DOMContentLoaded', () => {
         runInitialHighlight(redWords, exactPhrases);
         setupObserver(redWords, exactPhrases);
+        processAndObserve(redWords, exactPhrases);
       });
     } else {
       runInitialHighlight(redWords, exactPhrases);
       setupObserver(redWords, exactPhrases);
+      processAndObserve(redWords, exactPhrases);
     }
   }
 
   loadSettingsAndRun();
 })();
-
-

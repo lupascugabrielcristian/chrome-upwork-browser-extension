@@ -20,3 +20,16 @@
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
 }
 
+.air3-card-section.has-exact-phrase::before {
+  content: "✓";
+  color: #2cbc63;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.air3-card-section {
+  position: relative;
+}
